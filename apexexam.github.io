@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Exams | Cloud-Based B2B Online Examination & Assessment SaaS Platform</title>
+  <meta name="description" content="Apex Exams is an enterprise B2B SaaS online examination, mock test hosting, study repository, and automated merit-list analytics platform for coaching institutes and aspirants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Telugu:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --secondary: #0f172a;
+      --accent: #16a34a;
+      --purple: #7c3aed;
+      --amber: #d97706;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', 'Noto Sans Telugu', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* Navbar */
+    nav {
+      background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(10px);
+      color: white; padding: 14px 20px; position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
+    .brand-logo {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1.2rem; color: #0f172a;
+    }
+    .brand-text h1 { font-size: 1.2rem; font-weight: 900; letter-spacing: -0.3px; }
+    .brand-text span { display: block; font-size: 0.7rem; color: #38bdf8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+
+    .nav-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: 0.2s; }
+    .nav-links a:hover { color: #38bdf8; }
+    .nav-cta {
+      background: #0284c7; color: white !important; padding: 8px 16px; border-radius: 8px;
+      font-weight: 800 !important; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.35);
+    }
+    .nav-cta:hover { background: #0369a1; }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 70%);
+      color: white; padding: 64px 20px 72px; text-align: center;
+      border-bottom: 4px solid #38bdf8;
+    }
+    .hero-inner { max-width: 880px; margin: 0 auto; }
+    .saas-badge {
+      display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8; padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 18px;
+    }
+    .hero h2 { font-size: 2.35rem; font-weight: 900; line-height: 1.22; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero h2 span { color: #38bdf8; }
+    .hero p { font-size: 1.05rem; color: #cbd5e1; max-width: 720px; margin: 0 auto 28px; }
+    .hero-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 24px; border-radius: 10px; font-weight: 800; font-size: 0.95rem;
+      text-decoration: none; cursor: pointer; border: none; transition: 0.2s;
+    }
+    .btn-primary { background: #0284c7; color: white; box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35); }
+    .btn-primary:hover { background: #0369a1; transform: translateY(-1px); }
+    .btn-glass { background: rgba(255,255,255,0.1); color: white; border: 1.5px solid rgba(255,255,255,0.25); }
+    .btn-glass:hover { background: rgba(255,255,255,0.18); }
+
+    /* Trust Strip */
+    .trust-strip { max-width: 1080px; margin: -28px auto 36px; padding: 0 16px; }
+    .trust-grid {
+      background: white; border-radius: 14px; padding: 18px 20px;
+      border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; text-align: center;
+    }
+    .trust-item strong { display: block; font-size: 1.25rem; font-weight: 900; color: var(--primary-dark); }
+    .trust-item span { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+
+    /* Sections */
+    .section { max-width: 1140px; margin: 0 auto; padding: 36px 16px; }
+    .sec-head { text-align: center; margin-bottom: 32px; }
+    .sec-head .tag { color: var(--primary); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+    .sec-head h3 { font-size: 1.75rem; font-weight: 900; color: #0f172a; margin-top: 4px; }
+    .sec-head p { color: var(--muted); font-size: 0.95rem; max-width: 650px; margin: 6px auto 0; }
+
+    /* 4 Category Cards Grid */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 20px; }
+    .cat-card {
+      background: white; border-radius: 16px; padding: 24px; border: 1.5px solid var(--border);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04); display: flex; flex-direction: column;
+      justify-content: space-between; transition: 0.25s; position: relative; overflow: hidden;
+      text-decoration: none; color: inherit;
+    }
+    .cat-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 12px 24px rgba(2, 132, 199, 0.12); }
+    .cat-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+    .bar-blue { background: #0284c7; }
+    .bar-green { background: #16a34a; }
+    .bar-purple { background: #7c3aed; }
+    .bar-amber { background: #d97706; }
+
+    .cat-icon {
+      width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.5rem; margin-bottom: 14px; font-weight: 800;
+    }
+    .ic-blue { background: #e0f2fe; color: #0369a1; }
+    .ic-green { background: #dcfce7; color: #166534; }
+    .ic-purple { background: #ede9fe; color: #5b21b6; }
+    .ic-amber { background: #fef3c7; color: #92400e; }
+
+    .cat-card h4 { font-size: 1.18rem; font-weight: 800; margin-bottom: 4px; color: #0f172a; }
+    .cat-sub { font-size: 0.82rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
+    .cat-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 14px; }
+    .cat-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .mini-pill {
+      background: #f1f5f9; color: #334155; font-size: 0.74rem; font-weight: 700;
+      padding: 4px 9px; border-radius: 6px; border: 1px solid #e2e8f0;
+    }
+
+    .card-btn {
+      display: block; width: 100%; padding: 11px; border-radius: 10px; text-align: center;
+      font-weight: 800; font-size: 0.88rem; text-decoration: none; transition: 0.2s;
+    }
+    .cb-blue { background: #0284c7; color: white; }
+    .cat-card:hover .cb-blue { background: #0369a1; }
+    .cb-green { background: #16a34a; color: white; }
+    .cat-card:hover .cb-green { background: #15803d; }
+    .cb-purple { background: #7c3aed; color: white; }
+    .cat-card:hover .cb-purple { background: #6d28d9; }
+    .cb-amber { background: #d97706; color: white; }
+    .cat-card:hover .cb-amber { background: #b45309; }
+
+    /* SaaS Architecture & Features */
+    .saas-box {
+      background: white; border-radius: 18px; padding: 32px; border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .feat-item { background: #f8fafc; padding: 18px; border-radius: 12px; border: 1px solid var(--border); }
+    .feat-item h5 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; color: #0f172a; }
+    .feat-item p { font-size: 0.85rem; color: var(--muted); }
+
+    /* Pricing Section */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .price-card { background: white; border-radius: 16px; padding: 26px; border: 1.5px solid var(--border); position: relative; }
+    .price-card.featured { border-color: #0284c7; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.14); }
+    .price-tag { font-size: 2rem; font-weight: 900; color: #0f172a; margin: 10px 0; }
+    .price-tag small { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+    .cat-list { list-style: none; margin-bottom: 20px; font-size: 0.84rem; color: #334155; }
+    .cat-list li { margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+
+    /* Footer */
+    footer {
+      background: #0f172a; color: #94a3b8; padding: 42px 16px 24px; margin-top: 48px;
+      border-top: 4px solid #0284c7;
+    }
+    .footer-inner {
+      max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;
+      padding-bottom: 28px; border-bottom: 1px solid #1e293b;
+    }
+    .footer-col h5 { color: white; font-size: 0.98rem; font-weight: 800; margin-bottom: 12px; }
+    .footer-col p, .footer-col a { font-size: 0.84rem; color: #94a3b8; text-decoration: none; display: block; margin-bottom: 7px; }
+    .footer-col a:hover { color: #38bdf8; }
+    .footer-bottom { max-width: 1140px; margin: 18px auto 0; text-align: center; font-size: 0.8rem; color: #64748b; }
+
+    /* Policy Modal */
+    .modal-bg {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.78); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; padding: 16px; z-index: 200;
+    }
+    .modal-card {
+      background: white; max-width: 620px; width: 100%; border-radius: 14px; padding: 24px;
+      max-height: 82vh; overflow-y: auto; box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 640px) {
+      .hero h2 { font-size: 1.7rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">A</div>
+        <div class="brand-text">
+          <h1>Apex Exams</h1>
+          <span>B2B Exam-as-a-Service SaaS</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#categories">Exam & Resource Hubs</a>
+        <a href="#saas-features">SaaS Features</a>
+        <a href="#pricing">Institute Plans</a>
+        <a href="#contact">Contact & Policies</a>
+        <a href="si-mains-paper1.html" class="nav-cta">🔐 Portal Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="saas-badge">☁️ Enterprise Online Assessment & Learning Repository SaaS</div>
+      <h2>Complete <span>Exam Hosting, Mock Tests & Study Hub</span> for Institutes & Aspirants</h2>
+      <p>
+        <strong>Apex Exams (apexexams.github.io)</strong> is a multi-tenant B2B cloud software platform providing structured syllabus repositories, curated study materials, multi-series CBT mock exams, and automated rank-wise merit analytics for coaching institutes.
+      </p>
+      <div class="hero-btns">
+        <a href="#categories" class="btn btn-primary">🚀 Explore Exam & Study Hubs</a>
+        <a href="si-mains-paper1.html" class="btn btn-glass">🏛️ Institute Director / Admin Login</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY METRICS STRIP -->
+  <div class="trust-strip">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <strong>Multi-Domain Hub</strong>
+        <span>Syllabus • Materials • CBT Test Series</span>
+      </div>
+      <div class="trust-item">
+        <strong>Multi-Tenant SaaS</strong>
+        <span>Dedicated Institute Code & Role Access</span>
+      </div>
+      <div class="trust-item">
+        <strong>Instant Merit PDF</strong>
+        <span>Automated Rank & Section Analytics</span>
+      </div>
+      <div class="trust-item">
+        <strong>Zero Data Loss</strong>
+        <span>Cloud-Synced Auto-Save & PIN Security</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 BROAD CATEGORY CARDS (NAVIGATE TO DEDICATED HUB PAGES) -->
+  <section class="section" id="categories">
+    <div class="sec-head">
+      <span class="tag">Comprehensive Assessment & Resource Modules</span>
+      <h3>Select Category to Open Dedicated Portal</h3>
+      <p>Choose a recruitment category below to navigate to its dedicated Syllabus, Study Materials, Mock Exams, and Director Portal.</p>
+    </div>
+
+    <div class="cards-grid">
+      <!-- CARD 1: SI & PC -->
+      <a href="si-pc-hub.html" class="cat-card">
+        <div class="cat-top-bar bar-blue"></div>
+        <div>
+          <div class="cat-icon ic-blue">👮‍♂️</div>
+          <h4>SI & PC Recruitment</h4>
+          <div class="cat-sub">TSLPRB & AP Police Complete Portal</div>
+          <p class="cat-desc">End-to-end preparation & institute test hosting for Sub-Inspector and Police Constable Prelims & Mains.</p>
+          <div class="cat-pills">
+            <span class="mini-pill">📖 Syllabus</span>
+            <span class="mini-pill">📝 Grand Tests</span>
+            <span class="mini-pill">📚 PDF Notes</span>
+            <span class="mini-pill">🏛️ Director</span>
+          </div>
+        </div>
+        <span class="card-btn cb-blue">Open SI & PC Hub ➔</span>
+      </a>
+
+      <!-- CARD 2: TET & DSC -->
+      <a href="tet-dsc-hub.html" class="cat-card">
+        <div class="cat-top-bar bar-green"></div>
+        <div>
+          <div class="cat-icon ic-green">📚</div>
+          <h4>TET & DSC (TRT)</h4>
+          <div class="cat-sub">SGT, School Assistant & Perspectives</div>
+          <p class="cat-desc">Comprehensive teacher eligibility and recruitment test bank, pedagogy materials, and subject-wise grand exams.</p>
+          <div class="cat-pills">
+            <span class="mini-pill">📖 Syllabus</span>
+            <span class="mini-pill">📝 Mock Series</span>
+            <span class="mini-pill">📚 Study Bank</span>
+            <span class="mini-pill">🏛️ Director</span>
+          </div>
+        </div>
+        <span class="card-btn cb-green">Open TET & DSC Hub ➔</span>
+      </a>
+
+      <!-- CARD 3: GROUPS -->
+      <a href="groups-hub.html" class="cat-card">
+        <div class="cat-top-bar bar-purple"></div>
+        <div>
+          <div class="cat-icon ic-purple">🏛️</div>
+          <h4>TGPSC / APPSC Groups</h4>
+          <div class="cat-sub">Group-1, Group-2, Group-3 & Group-4</div>
+          <p class="cat-desc">State public service commission grand test series, economy & polity reference repository, and rank analytics.</p>
+          <div class="cat-pills">
+            <span class="mini-pill">📖 Syllabus</span>
+            <span class="mini-pill">📝 Paper Tests</span>
+            <span class="mini-pill">📚 Handouts</span>
+            <span class="mini-pill">🏛️ Director</span>
+          </div>
+        </div>
+        <span class="card-btn cb-purple">Open Groups Hub ➔</span>
+      </a>
+
+      <!-- CARD 4: INSTITUTE SAAS PORTAL -->
+      <a href="si-mains-paper1.html" class="cat-card">
+        <div class="cat-top-bar bar-amber"></div>
+        <div>
+          <div class="cat-icon ic-amber">🏫</div>
+          <h4>Institute SaaS Portal</h4>
+          <div class="cat-sub">Coaching Center Management Suite</div>
+          <p class="cat-desc">Dedicated B2B control center for directors to activate exams, manage student PINs, and export A4 merit lists.</p>
+          <div class="cat-pills">
+            <span class="mini-pill">▶️ Live Control</span>
+            <span class="mini-pill">🔑 PIN Reset</span>
+            <span class="mini-pill">🔄 Re-Exam</span>
+            <span class="mini-pill">🖨️ Merit PDF</span>
+          </div>
+        </div>
+        <span class="card-btn cb-amber">Open Institute Portal ➔</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- B2B SAAS PLATFORM FEATURES -->
+  <section class="section" id="saas-features">
+    <div class="saas-box">
+      <div class="sec-head" style="margin-bottom:24px;">
+        <span class="tag">Enterprise SaaS Architecture</span>
+        <h3>Why Coaching Institutes Choose Apex Exams Software</h3>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-item">
+          <h5>🔐 3-Tier Role-Based Access</h5>
+          <p>Separate authenticated portals for Super Admin, Coaching Center Directors, and Enrolled Roll-Number Students.</p>
+        </div>
+        <div class="feat-item">
+          <h5>🔑 Anti-Fraud Personal PIN</h5>
+          <p>Every student receives a unique 4-digit personal PIN on first login to prevent impersonation or unauthorized roll-number misuse.</p>
+        </div>
+        <div class="feat-item">
+          <h5>☁️ Cloud Auto-Save & Resume</h5>
+          <p>Real-time answer syncing ensures zero data loss during network drops or browser refreshes, preserving exact remaining exam time.</p>
+        </div>
+        <div class="feat-item">
+          <h5>🖨️ Instant A4 Merit & Response PDFs</h5>
+          <p>Directors download privacy-protected rank lists (hiding student mobile numbers) while students download full solution sheets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAAS SUBSCRIPTION / EXAM ACTIVATION PRICING -->
+  <section class="section" id="pricing">
+    <div class="sec-head">
+      <span class="tag">B2B SaaS Licensing</span>
+      <h3>Transparent Exam Activation Plans for Institutes</h3>
+      <p>Coaching directors pay only when activating a live grand test instance for their batch.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span style="font-size:0.78rem; font-weight:800; color:#0284c7; text-transform:uppercase;">Single Grand Test License</span>
+        <h4>Standard Batch Plan</h4>
+        <div class="price-tag">₹500 <small>/ exam instance</small></div>
+        <ul class="cat-list">
+          <li>✔️ Up to 100 Enrolled Roll Numbers</li>
+          <li>✔️ Live Exam Start / Stop Control</li>
+          <li>✔️ Re-Exam & Student PIN Reset Controls</li>
+          <li>✔️ A4 Merit List PDF & Student Scorecards</li>
+        </ul>
+        <a href="si-mains-paper1.html" class="card-btn cb-blue">Activate via Director Login</a>
+      </div>
+
+      <div class="price-card featured">
+        <span style="font-size:0.78rem; font-weight:800; color:#16a34a; text-transform:uppercase;">Most Popular • Academy Tier</span>
+        <h4>Multi-Batch Institutional Plan</h4>
+        <div class="price-tag">₹1,499 <small>/ month</small></div>
+        <ul class="cat-list">
+          <li>✔️ Unlimited Mock Tests (SI/PC, TET/DSC, Groups)</li>
+          <li>✔️ Up to 500 Active Students per Batch</li>
+          <li>✔️ Custom Institute Discount Vouchers</li>
+          <li>✔️ Priority Cloud D1 Database Hosting</li>
+        </ul>
+        <a href="si-mains-paper1.html" class="card-btn cb-green">Get Institutional Access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER WITH RAZORPAY COMPLIANCE POLICIES -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h5>Apex Exams SaaS</h5>
+        <p>Cloud-Based Online Examination, Mock Test Hosting & Automated Assessment Software for Educational Institutions.</p>
+        <p style="margin-top:8px;"><strong>Domain:</strong> https://apexexams.github.io</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Assessment Hubs</h5>
+        <a href="si-pc-hub.html">SI & PC Recruitment Hub</a>
+        <a href="tet-dsc-hub.html">TET & DSC (TRT) Hub</a>
+        <a href="groups-hub.html">TGPSC / APPSC Groups Hub</a>
+        <a href="si-mains-paper1.html">Institute Director Portal</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Legal & Compliance</h5>
+        <a href="javascript:void(0)" onclick="openPolicy('about')">About Apex Exams</a>
+        <a href="javascript:void(0)" onclick="openPolicy('terms')">Terms & Conditions</a>
+        <a href="javascript:void(0)" onclick="openPolicy('privacy')">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="openPolicy('refund')">Refund & Cancellation Policy</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Support & Contact Us</h5>
+        <p>📍 Hyderabad / Jagtial, Telangana, India</p>
+        <p>📧 support@apexexams.in</p>
+        <p>📞 +91-9876543210 (Mon–Sat, 9 AM – 7 PM)</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Apex Exams (apexexams.github.io). All Rights Reserved. | B2B Educational Assessment Software Platform.
+    </div>
+  </footer>
+
+  <!-- POLICY VIEWER MODAL -->
+  <div class="modal-bg" id="policyModal" onclick="if(event.target===this) closePolicy()">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:14px;">
+        <h3 id="policyTitle" style="font-size:1.15rem; color:#0f172a;">Policy</h3>
+        <button onclick="closePolicy()" style="border:none; background:#f1f5f9; padding:5px 10px; border-radius:6px; font-weight:800; cursor:pointer;">✕</button>
+      </div>
+      <div id="policyBody" style="font-size:0.9rem; color:#334155; line-height:1.7;"></div>
+    </div>
+  </div>
+
+  <script>
+    const POLICIES = {
+      about: {
+        title: "About Apex Exams (B2B SaaS Platform)",
+        body: `<p><strong>Apex Exams (https://apexexams.github.io)</strong> is a B2B Software-as-a-Service (SaaS) online examination, study repository, and computer-based testing (CBT) platform designed for coaching centers, educational academies, and competitive exam educators.</p>
+               <p style="margin-top:10px;">Our software provides multi-tenant exam hosting, bilingual question delivery (English & Telugu), automated evaluation, anti-fraud student PIN authentication, and printable merit-list analytics.</p>`
+      },
+      terms: {
+        title: "Terms & Conditions",
+        body: `<p>1. <strong>Software Usage:</strong> Apex Exams provides cloud examination software licenses to registered coaching center directors and educators.</p>
+               <p style="margin-top:8px;">2. <strong>Authorized Access:</strong> Only students with valid roll numbers assigned by their respective institute director are permitted to take live tests.</p>
+               <p style="margin-top:8px;">3. <strong>Intellectual Property:</strong> All software interfaces, analytics engines, and compiled test series are the property of Apex Exams.</p>`
+      },
+      privacy: {
+        title: "Privacy Policy",
+        body: `<p>1. <strong>Data Collection:</strong> We collect minimal candidate data (Roll Number, Name, Mobile Number) solely for exam authentication, score generation, and response sheet delivery.</p>
+               <p style="margin-top:8px;">2. <strong>Data Protection:</strong> Student mobile numbers are masked/hidden in public merit lists and notice-board PDFs. We never sell or share user data with third-party marketers.</p>
+               <p style="margin-top:8px;">3. <strong>Payment Security:</strong> All institute license payments are processed securely via Razorpay Payment Gateway; Apex Exams does not store card or UPI credentials.</p>`
+      },
+      refund: {
+        title: "Refund & Cancellation Policy",
+        body: `<p>1. <strong>SaaS License Activation:</strong> Institute exam activation fees are billed per live test instance or monthly subscription via Razorpay.</p>
+               <p style="margin-top:8px;">2. <strong>Refund Eligibility:</strong> If a technical server outage prevents a scheduled exam from being conducted, the institute director is eligible for a 100% refund or free exam credit within 5–7 business days.</p>
+               <p style="margin-top:8px;">3. <strong>Cancellations:</strong> Once an exam instance is activated and accessed by students, the activation fee is non-refundable. For billing queries, contact support@apexexams.in.</p>`
+      }
+    };
+
+    function openPolicy(key) {
+      document.getElementById('policyTitle').innerText = POLICIES[key].title;
+      document.getElementById('policyBody').innerHTML = POLICIES[key].body;
+      document.getElementById('policyModal').style.display = 'flex';
+    }
+    function closePolicy() {
+      document.getElementById('policyModal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
